@@ -5,4 +5,4 @@ pipelines:
         - step:
             script:
                 - bundle install
-                - bundle exec rake test
+                - bundle exec rake syntax
