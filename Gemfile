@@ -19,14 +19,12 @@ facterversion = ENV.key?('FACTER_VERSION') ? "~> #{ENV['FACTER_VERSION']}" : ['>
 
 gem 'facter', facterversion
 
+gem 'rake'
+gem 'rspec'
+gem 'puppet-lint', '>=0.3.2'
+gem 'rspec-puppet', '>=0.1.6'
+gem 'puppetlabs_spec_helper', '>=0.4.1'
 
-gem "rake", '< 11.0'
-gem "rspec", '< 3.2.0'
-gem "rspec-puppet", :git => 'https://github.com/rodjek/rspec-puppet.git'
-gem "puppetlabs_spec_helper"
-gem "metadata-json-lint"
-gem "beaker"
-gem "beaker-rspec"
-gem "beaker-vagrant"
-gem "vagrant-wrapper" 
-gem "vagrant" 
+gem 'beaker-rspec'
+gem 'bundler'
+gem 'vagrant-wrapper'
