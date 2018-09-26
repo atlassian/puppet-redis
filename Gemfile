@@ -25,9 +25,8 @@ gem "rspec", '< 3.2.0'
 gem "rspec-puppet", :git => 'https://github.com/rodjek/rspec-puppet.git'
 gem "puppetlabs_spec_helper"
 gem "metadata-json-lint"
-gem "rspec-puppet-facts"
-gem "vagrant-wrapper"  
-gem "guard-rake"
 gem "beaker"
-gem "beaker-vagrant"
 gem "beaker-rspec"
+gem "beaker-vagrant"
+gem "vagrant-wrapper" 
+gem "vagrant" 
