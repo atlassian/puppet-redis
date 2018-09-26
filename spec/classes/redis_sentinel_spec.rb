@@ -5,7 +5,7 @@ port 26379
 dir /tmp
 daemonize yes
 pidfile /var/run/redis/redis-sentinel.pid
-protected_mode no
+protected-mode no
 bind 127.0.0.1
 
 sentinel monitor mymaster 127.0.0.1 6379 2
