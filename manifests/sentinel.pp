@@ -155,6 +155,8 @@
 #
 class redis::sentinel (
   $auth_pass              = $::redis::params::sentinel_auth_pass,
+  $sentinel_bind          = $::redis::params::sentinel_bind,
+  $sentinel_protected     = $::redis::params::sentinel_protected,
   $config_file            = $::redis::params::sentinel_config_file,
   $config_file_orig       = $::redis::params::sentinel_config_file_orig,
   $config_file_mode       = $::redis::params::sentinel_config_file_mode,

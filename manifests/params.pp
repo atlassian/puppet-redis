@@ -42,6 +42,8 @@ class redis::params {
   $rdbcompression                  = true
   $requirepass                     = undef
   $save_db_to_disk                 = true
+  $sentinel_bind                   = undef
+  $sentinel_protected              = 'no'
   $sentinel_auth_pass              = undef
   $sentinel_config_file_mode       = '0644'
   $sentinel_config_group           = 'root'
