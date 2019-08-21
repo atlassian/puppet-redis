@@ -23,6 +23,7 @@ class redis::params {
   $hash_max_ziplist_entries        = 512
   $hash_max_ziplist_value          = 64
   $hll_sparse_max_bytes            = 3000
+  $client_output_buffer_limit_slave = '256mb 64mb 60'
   $hz                              = 10
   $latency_monitor_threshold       = 0
   $list_max_ziplist_entries        = 512
