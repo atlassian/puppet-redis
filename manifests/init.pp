@@ -131,10 +131,10 @@
 #   Default: 3000
 #
 # [*client_output_buffer_limit_slave*]
-#   
-# 
+#
+#
 #   Default: '256mb 64mb 60'
-# 
+#
 # [*hz*]
 #   Set redis background tasks frequency
 #
