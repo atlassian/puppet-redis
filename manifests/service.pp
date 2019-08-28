@@ -13,7 +13,6 @@ class redis::service {
       # file-line is updated
       file { $limit_conf_path:
         ensure  => present,
-        notify  => Exec['systemd daemon-reload'],
         content => template('systemd.limit.conf.erb'),
       }->
       file_line { 'Update a line to limit.conf file':
