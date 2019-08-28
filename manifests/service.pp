@@ -4,18 +4,23 @@
 #
 class redis::service {
   if $::redis::service_manage {
-    # If maxclients more then OS default default 
+    # If maxclients more then redis default default 
     # Set service LimitNOFILE limit to the new value
     if $::redis::params::maxclients > 10000 {
-      exec {'systemd daemon-reload':
-        refreshonly => true,
-        command     => 'systemctl daemon-reload',
-      }
+      $limit_conf_path = '/etc/systemd/system/' + $::redis::service_name + '.service.d/limit.conf'
 
-      file { '/etc/systemd/system/' + $::redis::service_name + '.service.d/limit.conf':
-        ensure  => file,
+      # Insure file is created and
+      # file-line is updated
+      file { $limit_conf_path:
+        ensure  => present,
         notify  => Exec['systemd daemon-reload'],
         content => template('systemd.limit.conf.erb'),
+      }->
+      file_line { 'Update a line to limit.conf file':
+        path               => $limit_conf_path,
+        line               => 'LimitNOFILE=' + $::redis::maxclients,
+        match              => '^LimitNOFILE=.*$',
+        append_on_no_match => false,
       }
     }
 
