@@ -6,7 +6,8 @@ class redis::service {
   if $::redis::service_manage {
     # If maxclients more then redis default default 
     # Set service LimitNOFILE limit to the new value
-    if $::redis::params::maxclients > 10000 {
+    if $::redis::maxclients > 10000 {
+
       $limit_conf_path = '/etc/systemd/system/' + $::redis::service_name + '.service.d/limit.conf'
 
       # Insure file is created and
