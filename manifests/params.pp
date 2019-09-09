@@ -183,6 +183,7 @@ class redis::params {
       $service_hasstatus         = true
       $service_name              = 'redis'
       $service_user              = 'redis'
+      $systemd_limit_template    = undef
       $ppa_repo                  = undef
     }
 
@@ -211,6 +212,7 @@ class redis::params {
       $service_hasstatus         = true
       $service_name              = 'redis'
       $service_user              = 'redis'
+      $systemd_limit_template    = undef
       $ppa_repo                  = undef
     }
 
