@@ -586,6 +586,7 @@ class redis (
   $stop_writes_on_bgsave_error   = $::redis::params::stop_writes_on_bgsave_error,
   $syslog_enabled                = $::redis::params::syslog_enabled,
   $syslog_facility               = $::redis::params::syslog_facility,
+  $systemd_limit_template        = $::redis::params::systemd_limit_template,
   $tcp_backlog                   = $::redis::params::tcp_backlog,
   $tcp_keepalive                 = $::redis::params::tcp_keepalive,
   $timeout                       = $::redis::params::timeout,

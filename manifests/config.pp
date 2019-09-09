@@ -58,6 +58,7 @@ class redis::config {
   $stop_writes_on_bgsave_error      = $::redis::stop_writes_on_bgsave_error
   $syslog_enabled                   = $::redis::syslog_enabled
   $syslog_facility                  = $::redis::syslog_facility
+  $systemd_limit_template           = $::redis::systemd_limit_template
   $tcp_backlog                      = $::redis::tcp_backlog
   $tcp_keepalive                    = $::redis::tcp_keepalive
   $timeout                          = $::redis::timeout
@@ -119,6 +120,28 @@ class redis::config {
         augeas { 'redis ulimit' :
           context => '/files/etc/default/redis-server',
           changes => "set ULIMIT ${::redis::ulimit}",
+        }
+      }
+    }
+
+    'RedHat': {
+      # If maxclients more then redis default default 
+      # Set service LimitNOFILE limit to the new value
+      if $::redis::maxclients > 10000 {
+
+        $limit_conf_path = "/etc/systemd/system/${::redis::service_name}.service.d/limit.conf"
+
+        # Insure file is created and
+        # file-line is updated
+        file { $limit_conf_path:
+          ensure  => present,
+          content => template($::redis::systemd_limit_template),
+        }->
+        file_line { 'Update a line to limit.conf file':
+          path               => $limit_conf_path,
+          line               => "LimitNOFILE=${::redis::maxclients}",
+          match              => '^LimitNOFILE=.*$',
+          append_on_no_match => false,
         }
       }
     }

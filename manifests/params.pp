@@ -70,6 +70,7 @@ class redis::params {
   $stop_writes_on_bgsave_error     = true
   $syslog_enabled                  = undef
   $syslog_facility                 = undef
+  $systemd_limit_template          = undef
   $tcp_backlog                     = 511
   $tcp_keepalive                   = 0
   $timeout                         = 0
@@ -154,6 +155,7 @@ class redis::params {
       $service_hasstatus         = true
       $service_name              = 'redis'
       $service_user              = 'redis'
+      $systemd_limit_template    = 'redis/systemd.limit.conf.erb'
       $ppa_repo                  = undef
     }
 
