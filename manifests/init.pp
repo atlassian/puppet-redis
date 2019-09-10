@@ -130,6 +130,11 @@
 #
 #   Default: 3000
 #
+# [*client_output_buffer_limit_slave*]
+#
+#
+#   Default: '256mb 64mb 60'
+#
 # [*hz*]
 #   Set redis background tasks frequency
 #
@@ -529,6 +534,7 @@ class redis (
   $hash_max_ziplist_entries      = $::redis::params::hash_max_ziplist_entries,
   $hash_max_ziplist_value        = $::redis::params::hash_max_ziplist_value,
   $hll_sparse_max_bytes          = $::redis::params::hll_sparse_max_bytes,
+  $client_output_buffer_limit_slave = $::redis::params::client_output_buffer_limit_slave,
   $hz                            = $::redis::params::hz,
   $latency_monitor_threshold     = $::redis::params::latency_monitor_threshold,
   $list_max_ziplist_entries      = $::redis::params::list_max_ziplist_entries,
@@ -580,6 +586,7 @@ class redis (
   $stop_writes_on_bgsave_error   = $::redis::params::stop_writes_on_bgsave_error,
   $syslog_enabled                = $::redis::params::syslog_enabled,
   $syslog_facility               = $::redis::params::syslog_facility,
+  $systemd_limit_template        = $::redis::params::systemd_limit_template,
   $tcp_backlog                   = $::redis::params::tcp_backlog,
   $tcp_keepalive                 = $::redis::params::tcp_keepalive,
   $timeout                       = $::redis::params::timeout,

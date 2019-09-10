@@ -582,6 +582,19 @@ describe 'redis', :type => :class do
     }
   end
 
+  describe 'with parameter client_output_buffer_limit_slave' do
+    let (:params) {
+      {
+        :client_output_buffer_limit_slave=> '_VALUE_'
+      }
+    }
+
+    it { should contain_file('/etc/redis/redis.conf.puppet').with(
+        'content' => /client_output_buffer_limit_slave.*_VALUE_/
+      )
+    }
+  end
+
   describe 'with parameter hz' do
     let (:params) {
       {
