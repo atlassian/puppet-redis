@@ -135,6 +135,8 @@ class redis::config {
         # file-line is updated
         file { $limit_conf_path:
           ensure  => present,
+          owner   => 'root',
+          mode    => '0644',
           content => template($::redis::systemd_limit_template),
         }->
         file_line { 'Update a line to limit.conf file':
